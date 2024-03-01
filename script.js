@@ -26,9 +26,14 @@ function updateTotal() {
 
   const balanceTotal = incomeTotal - expenseTotal;
 
-  balance.textContent = formatter.format(balanceTotal).substring(1);
-  income.textContent = formatter.format(incomeTotal);
-  expense.textContent = formatter.format(expenseTotal * -1);
+  const balanceValue = balanceTotal % 1 === 0 ? balanceTotal.toFixed(0) : balanceTotal.toFixed(2);
+  const incomeValue = incomeTotal % 1 === 0 ? incomeTotal.toFixed(0) : incomeTotal.toFixed(2);
+  const expenseValue = expenseTotal % 1 === 0 ? expenseTotal.toFixed(0) : expenseTotal.toFixed(2);
+
+  balance.textContent = `₦${balanceValue}`;
+  income.textContent = `₦${incomeValue}`;
+  expense.textContent = `₦${expenseValue * -1}`;
+
 }
 
 function renderList() {
